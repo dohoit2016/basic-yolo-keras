@@ -401,6 +401,8 @@ class YOLO(object):
             'TRUE_BOX_BUFFER' : self.max_box_per_image,
         }    
 
+        print 'train image 0: ', train_imgs[0]
+
         train_batch = BatchGenerator(train_imgs, 
                                      generator_config, 
                                      norm=self.feature_extractor.normalize)
