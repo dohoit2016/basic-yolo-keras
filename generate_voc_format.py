@@ -15,7 +15,8 @@ def read_images_dataset(folder_name):
         dic = {}
         dic["folder"] = "train"
         file_name = image_path.split(".")[0]
-        image_path = os.path.join(dataset_train, image_path)
+        # image_path = os.path.join(dataset_train, image_path)
+        print(image_path)
         dic["filename"] = image_path
         image_bound = os.path.join(dataset_bounde, file_name + ".txt")
         with open(image_bound, 'r') as file:
