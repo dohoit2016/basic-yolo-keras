@@ -15,7 +15,7 @@ def read_images_dataset(folder_name):
         dic = {}
         dic["folder"] = "train"
         file_name = image_path.split(".")[0]
-        # image_path = os.path.join(dataset_train, image_path)
+        
         print(image_path)
         dic["filename"] = image_path
         image_bound = os.path.join(dataset_bounde, file_name + ".txt")
@@ -29,7 +29,8 @@ def read_images_dataset(folder_name):
                 dic["y_bound"] = line[2]
                 dic["width_bound"] = line[3]
                 dic["height_bound"] = line[4]
-
+                
+        image_path = os.path.join(dataset_train, image_path)
         images = imread(image_path)
         dic["width"], dic["height"], dic["depths"] = images.shape
 
