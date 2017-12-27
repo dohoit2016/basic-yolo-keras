@@ -408,6 +408,8 @@ class YOLO(object):
                                      generator_config, 
                                      norm=self.feature_extractor.normalize,
                                      jitter=False)
+        print 'Length of train dataset after batch generator: ', len(train_batch)
+        print 'Length of valid dataset after batch generator: ', len(valid_batch)
 
         ############################################
         # Make a few callbacks
