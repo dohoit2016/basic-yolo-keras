@@ -90,6 +90,7 @@ def _main_(args):
     
     overlap_labels = set(config['model']['labels']).intersection(set(train_labels.keys()))
 
+    print "Length of train dataset: ", len(train_imgs)
     print 'Seen labels:\t', train_labels
     print 'Given labels:\t', config['model']['labels']
     print 'Overlap labels:\t', overlap_labels    
