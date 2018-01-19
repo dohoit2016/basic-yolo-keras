@@ -6,5 +6,6 @@ images/
 examples/
 tmp/
 full*
-
-
+templates/
+static/
+.idea/

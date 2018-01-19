@@ -72,7 +72,6 @@ class BatchGenerator(Sequence):
         self.jitter  = jitter
         self.norm    = norm
 
-        self.counter = 0
         self.anchors = [BoundBox(0, 0, config['ANCHORS'][2*i], config['ANCHORS'][2*i+1]) for i in range(int(len(config['ANCHORS'])//2))]
 
         ### augmentors by https://github.com/aleju/imgaug
@@ -223,20 +222,20 @@ class BatchGenerator(Sequence):
             # increase instance counter in current batch
             instance_count += 1  
 
-        self.counter += 1
-        #print ' new batch created', self.counter
+        #print ' new batch created', idx
 
         return [x_batch, b_batch], y_batch
 
     def on_epoch_end(self):
         if self.shuffle: np.random.shuffle(self.images)
-        self.counter = 0
 
     def aug_image(self, train_instance, jitter):
         image_name = train_instance['filename']
         image = cv2.imread(image_name)
+
+        if image is None: print 'Cannot find ', image_name
+
         h, w, c = image.shape
-        
         all_objs = copy.deepcopy(train_instance['object'])
 
         if jitter:
